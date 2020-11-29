@@ -1,0 +1,15 @@
+//test in Postman
+
+GET http://localhost:3000  /films
+
+
+###
+
+POST http://localhost:3000/films
+Content-Type: application/json
+
+{
+"title": "this is a movie",
+"year": "2020"
+}
+
