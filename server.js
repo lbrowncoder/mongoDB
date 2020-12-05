@@ -14,6 +14,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
 
+//get all film
+app.get(`/films`, async (req, res) => {
+  const films = await User.find();
+  return res.status(200).send(films);
+});
+
 db.once("open", async () => {
   if ((await Movie.countDocuments().exec()) > 0) return;
 
@@ -65,7 +71,7 @@ function pagination(model) {
 }
 
 // Create a Film
-app.post("/watch", (req, res) => {
+app.post("/watch", async (req, res) => {
   try {
     const addFilm = new Watch({
       _id: "0eafaadje5fad",
